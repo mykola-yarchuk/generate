@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {generateUsers} from "./generateUsers";
+import {FormEvent} from "react";
 
 function App() {
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault()
+
+    const users = generateUsers(5);
+
+    console.log(users);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main">
+      <form className="form" onSubmit={handleSubmit}>
+        <button type="submit" className="submitButton">
+          Generate 10000 users
+        </button>
+      </form>
     </div>
   );
 }
